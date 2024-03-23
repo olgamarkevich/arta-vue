@@ -2,7 +2,7 @@
   <nav class="nav">
     <ul class="nav__list">
       <li v-for="link in links" :key="link.id" class="nav__item">
-        <a href="" class="nav__link i18n">{{ link.title }}</a>
+        <a href="" class="nav__link i18n">{{ $t(link.title) }}</a>
       </li>
     </ul>
   </nav>

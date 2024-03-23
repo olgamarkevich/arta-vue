@@ -1,19 +1,5 @@
 <template>
   <section class="features">
-    <!-- <div class="features__item">
-      <img
-        src="../assets/images/features-1.jpg"
-        srcset="
-          ../assets/images/features-1@2x.jpg 2x,
-          ../assets/images/features-1@3x.jpg 3x
-        "
-        alt="Unlimited Art Creation"
-        class="features__img"
-      />
-
-      <div class="features__title i18n">Unlimited Art <br />Creation</div>
-    </div> -->
-
     <div v-for="feature in features" :key="feature.id" class="features__item">
       <img
         :src="`${feature.srcV}`"
@@ -21,7 +7,7 @@
         :alt="`${feature.alt}`"
         class="features__img"
       />
-      <div class="features__title i18n" v-html="feature.title"></div>
+      <div class="features__title i18n" v-html="$t(feature.title)"></div>
     </div>
   </section>
 </template>
@@ -33,8 +19,8 @@ export default {
       features: [
         {
           id: 1,
-          alt: 'Unlimited Art Creation<span>',
-          title: '<span>Unlimited Art <br />Creation<span>',
+          alt: 'Unlimited Art Creation',
+          title: 'Unlimited Art <br>Creation',
           srcV: '/img/features-1.jpg',
           srcsetV: '/img/features-1@2x.jpg 2x, /img/features-1@3x.jpg 3x',
         },
@@ -42,7 +28,7 @@ export default {
         {
           id: 2,
           alt: 'Exclusive Styles',
-          title: '<span>Exclusive <br />Styles</span>',
+          title: 'Exclusive <br>Styles',
           srcV: '/img/features-2.jpg',
           srcsetV: '/img/features-2@2x.jpg 2x, /img/features-2@3x.jpg 3x',
         },
@@ -50,7 +36,7 @@ export default {
         {
           id: 3,
           alt: 'Magic Avatars With 20% Off',
-          title: '<span>Magic Avatars <br />With 20% Off</span>',
+          title: 'Magic Avatars <br>With 20% Off',
           srcV: '/img/features-3.jpg',
           srcsetV:
             '/img/features-3@1.5x.jpg 1.5x, /img/features-3@2x.jpg 2x, /img/features-3@3x.jpg 3x',

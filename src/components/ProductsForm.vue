@@ -11,18 +11,18 @@
         />
         <div class="selectors__item">
           <div class="selectors__item-l">
-            <div class="selectors__tariff i18n">YEARLY ACCESS</div>
+            <div class="selectors__tariff i18n">{{ $t('YEARLY ACCESS') }}</div>
             <div class="selectors__tariff-info i18n">
-              Just {{ price }} per year
+              {{ $t('Just {price} per year') }}
             </div>
           </div>
           <div class="selectors__item-r">
             <div class="selectors__item-price i18n">
-              {{ price }} <br />per week
+              {{ $t('key', { price }) }} <br />per week
             </div>
           </div>
         </div>
-        <span class="best-offer-label i18n">BEST OFFER</span>
+        <span class="best-offer-label i18n">{{ $t('BEST OFFER') }}</span>
       </div>
 
       <div class="radio-line">
@@ -34,22 +34,30 @@
         />
         <div class="selectors__item">
           <div class="selectors__item-l">
-            <div class="selectors__tariff i18n">WEEKLY ACCESS</div>
+            <div class="selectors__tariff i18n">{{ $t('WEEKLY ACCESS') }}</div>
           </div>
           <div class="selectors__item-r">
             <div class="selectors__item-price i18n">
-              {{ price }} <br />per week
+              {{ $t('Just {price} per year', { price }) }}
             </div>
           </div>
         </div>
       </div>
     </div>
-    <button id="continueBtn" type="button" class="button i18n">Continue</button>
+    <button id="continueBtn" type="button" class="button i18n">
+      {{ $t('Continue') }}
+    </button>
   </section>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      price: 30,
+    };
+  },
+};
 </script>
 
 <style scoped>

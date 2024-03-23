@@ -1,5 +1,5 @@
 <template>
-  <div class="title i18n">Get Unlimited <br />Access</div>
+  <div class="title i18n" v-html="$t('Get Unlimited <br>Access')"></div>
 </template>
 
 <script>
