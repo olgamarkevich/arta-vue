@@ -1,52 +1,34 @@
 <template>
   <section class="form">
     <div class="selectors">
-      <div class="radio-line">
+      <div class="radio-line" v-for="radio in radioList" :key="radio.id">
         <input
           type="radio"
-          checked="checked"
-          name="selector"
           class="radio-input"
-          data-link="https://apple.com/"
+          :value="`${radio.urlRadio}`"
+          v-model="url"
         />
         <div class="selectors__item">
           <div class="selectors__item-l">
-            <div class="selectors__tariff i18n">{{ $t('YEARLY ACCESS') }}</div>
-            <div class="selectors__tariff-info i18n">
+            <div class="selectors__tariff i18n">{{ $t(`${radio.title}`) }}</div>
+
+            <div v-if="radio.tariffInfo" class="selectors__tariff-info i18n">
               {{ $t('Just {price} per year') }}
             </div>
           </div>
           <div class="selectors__item-r">
-            <div class="selectors__item-price i18n">
-              {{ $t('key', { price }) }} <br />per week
-            </div>
+            <div class="selectors__item-price i18n" v-html="radio.price"></div>
           </div>
         </div>
-        <span class="best-offer-label i18n">{{ $t('BEST OFFER') }}</span>
-      </div>
-
-      <div class="radio-line">
-        <input
-          type="radio"
-          name="selector"
-          class="radio-input"
-          data-link="https://google.com/"
-        />
-        <div class="selectors__item">
-          <div class="selectors__item-l">
-            <div class="selectors__tariff i18n">{{ $t('WEEKLY ACCESS') }}</div>
-          </div>
-          <div class="selectors__item-r">
-            <div class="selectors__item-price i18n">
-              {{ $t('Just {price} per year', { price }) }}
-            </div>
-          </div>
-        </div>
+        <span v-if="radio.BESTOFFER" class="best-offer-label i18n">{{
+          $t('BEST OFFER')
+        }}</span>
       </div>
     </div>
-    <button id="continueBtn" type="button" class="button i18n">
+
+    <a :href="`${url}`" class="button i18n">
       {{ $t('Continue') }}
-    </button>
+    </a>
   </section>
 </template>
 
@@ -55,12 +37,32 @@ export default {
   data() {
     return {
       price: 30,
+      url: 'https://apple.com/',
+      radioList: [
+        {
+          id: 1,
+          urlRadio: 'https://apple.com/',
+          title: 'YEARLY ACCESS',
+          BESTOFFER: true,
+          tariffInfo: true,
+          price: '{{price}} <br>per week',
+        },
+
+        {
+          id: 2,
+          urlRadio: 'https://google.com/',
+          title: 'WEEKLY ACCESS',
+          BESTOFFER: false,
+          tariffInfo: false,
+          price: 'Just {{price}} per year',
+        },
+      ],
     };
   },
 };
 </script>
 
-<style scoped>
+<style>
 .form {
   margin-bottom: 5.23vh;
 }
@@ -71,13 +73,16 @@ export default {
   font-size: 20px;
   font-style: normal;
   text-align: center;
-  display: block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   width: 100%;
   border: none;
   border-radius: 32px;
   font-weight: 500;
   cursor: pointer;
   color: #070b33;
+  text-decoration: none;
 }
 
 @media (pointer: none) {

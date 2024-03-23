@@ -8,7 +8,7 @@ import ja from './locales/ja.json';
 import pt from './locales/pt.json';
 
 const i18n = createI18n({
-  locale: 'de',
+  locale: 'en',
   fallbackLocale: 'en',
   messages: {
     de,
