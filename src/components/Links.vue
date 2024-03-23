@@ -1,20 +1,26 @@
 <template>
   <nav class="nav">
     <ul class="nav__list">
-      <li class="nav__item">
-        <a href="#" class="nav__link i18n">Terms of Use</a>
-      </li>
-      <li class="nav__item">
-        <a href="#" class="nav__link i18n">Privacy Policy</a>
-      </li>
-      <li class="nav__item">
-        <a href="#" class="nav__link i18n">Restore</a>
+      <li v-for="link in links" :key="link.id" class="nav__item">
+        <a href="" class="nav__link i18n">{{ link.title }}</a>
       </li>
     </ul>
   </nav>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      links: [
+        { id: 1, title: 'Terms of Use', href: '#' },
+        { id: 2, title: 'Privacy Policy', href: '#' },
+        { id: 3, title: 'Restore', href: '#' },
+      ],
+    };
+  },
+};
+</script>
 
 <style>
 .nav .nav__list {
