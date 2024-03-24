@@ -13,11 +13,14 @@
             <div class="selectors__tariff i18n">{{ $t(`${radio.title}`) }}</div>
 
             <div v-if="radio.tariffInfo" class="selectors__tariff-info i18n">
-              {{ $t('Just {price} per year') }}
+              {{ $t('Just {price} per year', { price: '20$' }) }}
             </div>
           </div>
           <div class="selectors__item-r">
-            <div class="selectors__item-price i18n" v-html="radio.price"></div>
+            <div
+              class="selectors__item-price i18n"
+              v-html="$t(radio.priceLabel, { price: radio.price })"
+            ></div>
           </div>
         </div>
         <span v-if="radio.BESTOFFER" class="best-offer-label i18n">{{
@@ -36,7 +39,6 @@
 export default {
   data() {
     return {
-      price: 30,
       url: 'https://apple.com/',
       radioList: [
         {
@@ -45,7 +47,8 @@ export default {
           title: 'YEARLY ACCESS',
           BESTOFFER: true,
           tariffInfo: true,
-          price: '{{price}} <br>per week',
+          priceLabel: '{price} <br>per week',
+          price: '5$',
         },
 
         {
@@ -54,7 +57,8 @@ export default {
           title: 'WEEKLY ACCESS',
           BESTOFFER: false,
           tariffInfo: false,
-          price: 'Just {{price}} per year',
+          priceLabel: 'Just {price} per year',
+          price: '50$',
         },
       ],
     };
