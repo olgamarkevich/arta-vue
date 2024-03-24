@@ -66,7 +66,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .form {
   margin-bottom: 5.23vh;
 }

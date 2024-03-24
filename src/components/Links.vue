@@ -22,7 +22,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 .nav .nav__list {
   margin: 0;
   padding: 0;

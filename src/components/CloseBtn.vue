@@ -6,7 +6,7 @@
 export default {};
 </script>
 
-<style>
+<style scoped>
 .cross-icon {
   background: url(../assets/icon/cross-icon.svg) center no-repeat;
   width: 12px;
