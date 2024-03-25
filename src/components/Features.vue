@@ -7,7 +7,7 @@
         :alt="`${feature.alt}`"
         class="features__img"
       />
-      <div class="features__title i18n" v-html="$t(feature.title)"></div>
+      <div class="features__title" v-html="$t(feature.title)"></div>
     </div>
   </section>
 </template>

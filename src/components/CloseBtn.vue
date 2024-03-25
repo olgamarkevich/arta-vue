@@ -2,10 +2,6 @@
   <a href="#" class="cross-icon"></a>
 </template>
 
-<script>
-export default {};
-</script>
-
 <style scoped>
 .cross-icon {
   background: url(../assets/icon/cross-icon.svg) center no-repeat;

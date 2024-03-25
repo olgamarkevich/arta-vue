@@ -1,10 +1,6 @@
 <template>
-  <div class="title i18n" v-html="$t('Get Unlimited <br>Access')"></div>
+  <div class="title" v-html="$t('Get Unlimited <br>Access')"></div>
 </template>
-
-<script>
-export default {};
-</script>
 
 <style scoped>
 .title {
@@ -17,10 +13,6 @@ export default {};
   font-weight: 800;
 }
 
-.title.scale-text {
-  margin-bottom: 20px;
-}
-
 @media screen and (max-height: 700px) {
   .title {
     margin-bottom: 20px;
@@ -29,9 +21,6 @@ export default {};
 
 @media screen and (max-height: 600px) {
   .title {
-    font-size: 35px;
-  }
-  .title.scale-text {
     font-size: 35px;
   }
 }

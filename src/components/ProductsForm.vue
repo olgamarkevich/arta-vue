@@ -10,26 +10,26 @@
         />
         <div class="selectors__item">
           <div class="selectors__item-l">
-            <div class="selectors__tariff i18n">{{ $t(`${radio.title}`) }}</div>
+            <div class="selectors__tariff">{{ $t(`${radio.title}`) }}</div>
 
-            <div v-if="radio.tariffInfo" class="selectors__tariff-info i18n">
+            <div v-if="radio.tariffInfo" class="selectors__tariff-info">
               {{ $t('Just {price} per year', { price: '20$' }) }}
             </div>
           </div>
           <div class="selectors__item-r">
             <div
-              class="selectors__item-price i18n"
+              class="selectors__item-price"
               v-html="$t(radio.priceLabel, { price: radio.price })"
             ></div>
           </div>
         </div>
-        <span v-if="radio.BESTOFFER" class="best-offer-label i18n">{{
+        <span v-if="radio.BESTOFFER" class="best-offer-label">{{
           $t('BEST OFFER')
         }}</span>
       </div>
     </div>
 
-    <a :href="`${url}`" class="button i18n">
+    <a :href="`${url}`" class="button">
       {{ $t('Continue') }}
     </a>
   </section>
@@ -121,10 +121,6 @@ export default {
   font-weight: 400;
 }
 
-.selectors__tariff.scale-text {
-  font-size: 14px;
-}
-
 .selectors__item-l {
   width: calc(100% - 102px);
   padding-right: 10px;
@@ -184,9 +180,6 @@ export default {
 @media screen and (max-height: 700px) {
   .form {
     margin-bottom: 25px;
-  }
-  .selectors__tariff.scale-text {
-    font-size: 13px;
   }
 }
 
