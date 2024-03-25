@@ -1,6 +1,11 @@
 <template>
   <nav class="nav">
-    <ul class="nav__list">
+    <ul
+      class="nav__list"
+      ref="navList"
+      @resize="onResize"
+      :class="{ 'changed-height': changedHeight }"
+    >
       <li v-for="link in links" :key="link.id" class="nav__item">
         <a href="" class="nav__link i18n">{{ $t(link.title) }}</a>
       </li>
@@ -9,6 +14,7 @@
 </template>
 
 <script>
+import useChangedHeight from '../hooks/useChangedHeight';
 export default {
   data() {
     return {
@@ -17,6 +23,16 @@ export default {
         { id: 2, title: 'Privacy Policy', href: '#' },
         { id: 3, title: 'Restore', href: '#' },
       ],
+    };
+  },
+
+  setup() {
+    const { navList, changedHeight, onResize } = useChangedHeight();
+
+    return {
+      navList,
+      changedHeight,
+      onResize,
     };
   },
 };
@@ -42,20 +58,20 @@ export default {
   letter-spacing: 0.577px;
 }
 
-.nav.minFZ .nav__list .nav__link {
-  font-size: 11px;
-}
-
 .nav .nav__list .nav__item:not(:last-child) {
   margin-right: 32px;
 }
 
-.nav.minFZ {
+.nav .changed-height {
   margin: 0 -15px;
 }
 
-.nav.minFZ .nav__list .nav__item:not(:last-child) {
+.nav .nav__list.changed-height .nav__item:not(:last-child) {
   margin-right: 15px;
+}
+
+.nav .nav__list.changed-height .nav__link {
+  font-size: 11px;
 }
 
 @media (hover: hover) and (pointer: fine) {
