@@ -1,29 +1,22 @@
-import { ref, watch, onMounted } from 'vue';
+import { ref, onMounted } from 'vue';
 
-function useChangedHeight() {
-  const navList = ref(null);
-  const changedHeight = ref();
+function useChangedHeight(maxHeight) {
+  const elementRef = ref(null);
+  const heightExceededRef = ref(false);
 
-  const onResize = () => {
-    if (navList.value.clientHeight > 20) {
-      changedHeight.value = true;
-    } else {
-      changedHeight.value = false;
+  const checkHeight = () => {
+    if (elementRef.value !== null) {
+      heightExceededRef.value = elementRef.value.clientHeight > maxHeight;
     }
   };
 
-  watch(changedHeight, () => {
-    onResize();
-  });
-
   onMounted(() => {
-    onResize();
+    checkHeight();
   });
 
   return {
-    navList,
-    changedHeight,
-    onResize,
+    elementRef,
+    heightExceededRef,
   };
 }
 

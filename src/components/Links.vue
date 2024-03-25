@@ -2,12 +2,11 @@
   <nav class="nav">
     <ul
       class="nav__list"
-      ref="navList"
-      @resize="onResize"
-      :class="{ 'changed-height': changedHeight }"
+      ref="elementRef"
+      :class="{ 'changed-height': heightExceededRef }"
     >
       <li v-for="link in links" :key="link.id" class="nav__item">
-        <a href="" class="nav__link i18n">{{ $t(link.title) }}</a>
+        <a href="" class="nav__link">{{ $t(link.title) }}</a>
       </li>
     </ul>
   </nav>
@@ -27,12 +26,11 @@ export default {
   },
 
   setup() {
-    const { navList, changedHeight, onResize } = useChangedHeight();
+    const { elementRef, heightExceededRef } = useChangedHeight(20);
 
     return {
-      navList,
-      changedHeight,
-      onResize,
+      elementRef,
+      heightExceededRef,
     };
   },
 };
